@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Local apps
+    'smart_health_care_system.apps.SmartHealthCareSystemConfig',
 ]
 
 MIDDLEWARE = [
