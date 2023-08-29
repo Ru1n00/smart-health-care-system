@@ -1,0 +1,9 @@
+{% for donor in blood_donors %}
+    <ul>
+        <li>{{ donor.name }}</li>
+        <li>{{ donor.blood_group }}</li>
+        <li>{{ donor.location }}</li>
+        <li>{{ donor.contact_info }}</li>
+    </ul>
+    <br>
+{% endfor %}

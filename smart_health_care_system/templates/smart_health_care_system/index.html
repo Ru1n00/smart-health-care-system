@@ -1,0 +1,77 @@
+{% extends 'smart_health_care_system/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- section -->
+    <section class="shcs-section shcs-margin-t-4">
+        <div class="container">
+            <!-- landing img section -->
+            <div class="shcs-landing-page-img">
+                <div class="shcs-landing-img-content shcs-h-100 text-center">
+                    <div class="row shcs-h-100 g-2">
+                        <div class="col-12 col-md-6 shcs-my-auto text-dark">
+                            <h1 class="shcs-fs-1 shcs-landing-page-font">Smart <span class="shcs-color-red">Health</span></h1> 
+                            <h1 class="shcs-fs-1 shcs-landing-page-font"> Care <span class="shcs-color-red">System</span></h1>
+                            <p class="mt-4 fs-5">Where you can <b>find doctors</b>, <b>blood donors</b>, and <b>ambulance info</b>. </p>
+                            <p class="fs-5 mt-4 text-center p-2"><b><i>Save time, make informed decisions, and improve your health today.</i></b></p>
+                            <a class="btn shcs-success btn-lg mt-2" href="" class="shcs-landing-page-btn">Explore</a>
+                        </div>
+                        <div class="col-12 col-md-6 shcs-my-auto shcs-ai-overlay-containter">
+                            <div class="shcs-ai-overlay-container2">
+                                <div class="shcs-ai-overlay"></div>
+                            </div>
+                            <h1 class="shcs-fs-1 shcs-landing-page-font">AI <span class="shcs-color-red">Psychiatrist</span></h1>
+                            <p class="mt-4 fs-5 p-2"><b><i>Our AI can tell if you have any mental disorder by evaluating your EEG report</i></b></p>
+                            <a class="btn shcs-success btn-lg mt-2" href="" class="shcs-landing-page-btn">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BMI section -->
+            <div class="shcs-bmi-section shcs-margin-t-4">
+                <div class="row">
+                    <div class="col-12 col-md-6 g-4">
+                        <div class="w-100 position-relative">
+                            <img class="img-fluid shcs-radius" src="{% static 'image/bmi.jpg' %}" alt="">
+                            <div class="shcs-bmi-content-container">
+                                <h1 class="shcs-fs-2 text-white">How healthy are you?</h1>
+                                <a class="btn shcs-success btn-lg mt-5" href="" class="shcs-landing-page-btn">Check your BMI</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 g-4">
+                        <div class="w-100 position-relative">
+                            <img class="img-fluid shcs-radius" src="{% static 'image/doctor.jpg' %}" alt="">
+                            <div class="shcs-bmi-content-container">
+                                <h1 class="shcs-fs-2 text-white">Trying to find a doctor?</h1>
+                                <a class="btn shcs-success btn-lg mt-5" href="" class="shcs-landing-page-btn">Find Doctor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row shcs-margin-t-4">
+                    <div class="col-12 col-md-6 g-4">
+                        <div class="w-100 position-relative">
+                            <img class="img-fluid shcs-radius" src="{% static 'image/donor.jpg' %}" alt="">
+                            <div class="shcs-bmi-content-container">
+                                <h1 class="shcs-fs-2 text-white">Trying to find a donor?</h1>
+                                <a class="btn shcs-success btn-lg mt-5" href="" class="shcs-landing-page-btn">Find Donor</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 g-4">
+                        <div class="w-100 position-relative">
+                            <img class="img-fluid shcs-radius" src="{% static 'image/amb.jpg' %}" alt="">
+                            <div class="shcs-bmi-content-container">
+                                <h1 class="shcs-fs-2 text-white">Trying to find an ambulance?</h1>
+                                <a class="btn shcs-success btn-lg mt-5" href="" class="shcs-landing-page-btn">Find Ambulance</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% for doctor in doctors %}
+    {{ doctor.name }}
+    {{ doctor.speciality }}
+    {{ doctor.degrees_earned }}
+    {{ doctor.position }}
+    {{ doctor.location }}
+    {{ doctor.visiting_place }}
+    {{ doctor.visiting_hours }}
+    {{ doctor.contact_info }}
+    {% if doctor.img %}
+        {{ doctor.img.url }}
+    {% endif %}
+{% endfor %}
