@@ -11,6 +11,7 @@ class DoctorListView(ListView):
     model = Doctor
     template_name = 'smart_health_care_system/doctors.html'
     context_object_name = 'doctors'
+    paginate_by = 10
 
 
 class DoctorDetailView(DetailView):
@@ -23,12 +24,14 @@ class BloodDonorListView(ListView):
     model = BloodDonor
     template_name = 'smart_health_care_system/blood_donors.html'
     context_object_name = 'blood_donors'
+    paginate_by = 10
 
 
 class AmbulanceListView(ListView):
     model = Ambulance
     template_name = 'smart_health_care_system/ambulances.html'
     context_object_name = 'ambulances'
+    paginate_by = 10
 
 
 
