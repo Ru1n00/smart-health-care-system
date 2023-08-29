@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import Doctor, BloodDonor, Ambulance
 # Create your views here.
 def index(request):
-    return HttpResponse("This is homepage of smart_health_care_system")
+    return render(request, 'smart_health_care_system/index.html')
 
 
 class DoctorListView(ListView):
