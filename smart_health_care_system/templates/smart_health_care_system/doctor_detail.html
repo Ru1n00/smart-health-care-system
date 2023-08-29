@@ -1,0 +1,13 @@
+<ul>
+    <li> {{ doctor.name }}</li>
+    <li> {{ doctor.speciality }}</li>
+    <li> {{ doctor.degrees_earned }}</li>
+    <li> {{ doctor.position }}</li>
+    <li> {{ doctor.location }}</li>
+    <li> {{ doctor.visiting_place }}</li>
+    <li> {{ doctor.visiting_hours }}</li>
+    <li> {{ doctor.contact_info }}</li>
+    {% if doctor.img %}
+        {{ doctor.img.url }}
+    {% endif %}
+</ul>
