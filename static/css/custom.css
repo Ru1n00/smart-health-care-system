@@ -308,6 +308,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .shcs-margin-4 {
@@ -391,6 +392,10 @@ body {
   z-index: -2;
   border-radius: 0px 25px 25px 0px;
   opacity: 0.6;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5.2px);
+  -webkit-backdrop-filter: blur(5.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 @media (max-width: 992px) {
   .shcs-ai-overlay {
