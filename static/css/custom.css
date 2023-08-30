@@ -297,7 +297,7 @@ body {
   font-size: 2rem;
 }
 
-.shcs-bmi-section .shcs-bmi-content-container {
+.shcs-bmi-content-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -309,6 +309,56 @@ body {
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.bmi-main-func-container {
+  height: 250px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  position: relative;
+}
+.bmi-main-func-container .bmi-main-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(320deg, #f27121, #e94057, #8a2387);
+  opacity: 0.8;
+  border-radius: 25px;
+  z-index: -1;
+}
+.bmi-main-func-container .bmi-error-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+  opacity: 0.9;
+  border-radius: 25px;
+  z-index: 1;
+}
+.bmi-main-func-container .bmi-error-overlay .bmi-error-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.bmi-main-func-container .bmi-error-overlay .bmi-error-close-btn:hover {
+  font-weight: bolder;
+}
+.bmi-main-func-container .bmi-error-overlay .bmi-error-text {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-top: 110px;
+}
+
+.bmi-div-hidden {
+  display: none !important;
 }
 
 .shcs-margin-4 {

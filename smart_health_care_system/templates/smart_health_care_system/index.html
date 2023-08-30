@@ -27,8 +27,8 @@
                 </div>
             </div>
 
-            <!-- BMI section -->
-            <div class="shcs-bmi-section shcs-margin-t-4">
+
+            <div class="shcs-margin-t-4">
                 <div class="row">
                     <div class="col-12 col-md-6 g-4">
                         <div class="w-100 position-relative">
@@ -69,9 +69,42 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12 g-4 p-4 shcs-margin-t-4 bmi-main-func-container">
+                        <div class="bmi-main-overlay">
+                        </div>
+                        <h2 class="text-center" id="bmi">BMI CALCULATOR</h2>
+                        <div class="row my-5 bmi-calculate">
+                            <div class="col">
+                                <input type="text" class="form-control bmi-height" placeholder="Height(inches)" aria-label="Height">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control bmi-weight" placeholder="Weight(kg)" aria-label="Weight">
+                            </div>
+                            <div class="d-grid gap-2 mt-5">
+                                <button class="btn btn-primary bmi-button" type="button">Calculate</button>
+                            </div>
+                            
+                            <div class="bmi-error-overlay bmi-div-hidden">
+                                <span class="bmi-error-close-btn"><b>X</b></span>
+
+                                <div class="bmi-error-text">Height and weight should be in number</div>
+                            </div>
+                        </div>
+                        <div class="row my-5 bmi-result bmi-div-hidden">
+                            <h2 class="text-center">You are <span class="bmi-category"></span></h2>
+                            <div class="d-grid gap-2 mt-5">
+                                <button class="btn btn-primary bmi-button-back" type="button">Back</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 {% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'js/bmi.js' %}"></script>
+{% endblock scripts %}
