@@ -27,6 +27,10 @@ class Doctor(models.Model):
     img = models.ImageField(upload_to='doctor_pics/', null=True, blank=True)
 
 
+    class Meta:
+        ordering = ['id']
+
+
 
 class BloodDonor(models.Model):
     name = models.CharField(max_length=100, help_text="Enter donor's name -> John Doe")
@@ -35,8 +39,15 @@ class BloodDonor(models.Model):
     contact_info = models.CharField(max_length=100, help_text="Enter donor's contact info -> +92 123 4567890")
 
 
+    class Meta:
+        ordering = ['id']
+
 
 class Ambulance(models.Model):
     name = models.CharField(max_length=100, help_text="Enter ambulance company's name -> John Doe")
     contact_info = models.CharField(max_length=100, help_text="Enter ambulance company's contact info -> +92 123 4567890")
     district = models.CharField(max_length=100, help_text="Enter ambulance company's district -> Dhaka", choices=DISTRICTS)
+
+
+    class Meta:
+        ordering = ['id']
