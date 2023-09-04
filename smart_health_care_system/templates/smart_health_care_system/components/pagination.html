@@ -1,0 +1,57 @@
+{% load custom_tags %}
+<ul class="pagination mt-4 justify-content-center">
+    {% if page_obj.has_previous %}
+        {% if '?' in request.get_full_path %}
+            {% if 'page' in request.get_full_path %}
+                <li class="page-item">
+                    <a class="page-link" href="{{request.get_full_path|param_replace:1 }}">&laquo; first</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{request.get_full_path}}?page=1">&laquo; first</a>
+                </li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link" href="{{request.get_full_path|param_replace:page_obj.previous_page_number }}">previous</a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; first</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+            </li>
+        {% endif %}
+    {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#">&laquo;</a>
+        </li>
+    {% endif %} 
+
+
+    <li class="page-item">
+        <span class="current page-link" style="color: #000 !important;">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+    </li>
+        
+
+
+    {% if page_obj.has_next %}
+        {% if '?' in request.get_full_path %}
+            <li class="page-item">
+                <a class="page-link" href="{{request.get_full_path | param_replace:page_obj.next_page_number}}">next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="{{request.get_full_path | param_replace:page_obj.paginator.num_pages }}">&raquo; last</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            </li>
+        {% endif %}
+    {% endif %}
+</ul>
