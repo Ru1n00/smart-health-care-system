@@ -1,13 +1,21 @@
-<ul>
-    <li> {{ doctor.name }}</li>
-    <li> {{ doctor.speciality }}</li>
-    <li> {{ doctor.degrees_earned }}</li>
-    <li> {{ doctor.position }}</li>
-    <li> {{ doctor.location }}</li>
-    <li> {{ doctor.visiting_place }}</li>
-    <li> {{ doctor.visiting_hours }}</li>
-    <li> {{ doctor.contact_info }}</li>
-    {% if doctor.img %}
-        {{ doctor.img.url }}
-    {% endif %}
-</ul>
+{% extends 'smart_health_care_system/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-4" style="min-height: 300px;">
+            <img src="{% if doctor.img %} {{ doctor.img.url }} {% else %} {% static '/image/no-img.jpeg' %} {% endif %}"  class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-md-8">
+            <h1>{{ doctor.name }}</h1>
+            <h3>{{ doctor.speciality }}</h3>
+            <p>{{ doctor.degrees_earned }}</p>
+            <p>{{ doctor.position }}</p>
+            <p>{{ doctor.location }}</p>
+            <p>{{ doctor.visiting_place }}</p>
+            <p>{{ doctor.visiting_hours }}</p>
+            <p>{{ doctor.contact_info }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
