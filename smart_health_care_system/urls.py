@@ -12,7 +12,9 @@ urlpatterns = [
     path('doctors/<int:pk>/', views.DoctorDetailView.as_view(), name='doctor_detail'),
     path('doctors/search', views.DoctorListView.as_view(), name="doctor_search" ),
     path('blood-donors/', views.BloodDonorListView.as_view(), name='blood_donors'),
+    path('blood-donors/search', views.BloodDonorListView.as_view(), name='blood_donors_search'),
     path('ambulances/', views.AmbulanceListView.as_view(), name='ambulances'),
+    path('ambulances/search', views.AmbulanceListView.as_view(), name='ambulances_search'),
     # path('seed/', views.seed, name='seed'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
