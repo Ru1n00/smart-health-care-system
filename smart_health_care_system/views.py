@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import ListView, DetailView
+from django.db.models import Q
 
 from .models import Doctor, BloodDonor, Ambulance
 # Create your views here.
@@ -12,6 +13,22 @@ class DoctorListView(ListView):
     template_name = 'smart_health_care_system/doctors.html'
     context_object_name = 'doctors'
     paginate_by = 10
+
+    def get(self, request, *args, **kwargs):
+        print(request.GET)
+        if 'query' in request.GET:
+            self.query = request.GET['query']
+        else:
+            self.query = ''
+        
+        if self.query:
+            self.object_list = self.model.objects.filter(Q(name__icontains=self.query) | Q(speciality__icontains=self.query) | Q(location__icontains=self.query))
+            
+        else:
+            self.object_list = self.model.objects.all()
+        
+        context = self.get_context_data()
+        return self.render_to_response(context)
 
 
 class DoctorDetailView(DetailView):
@@ -35,6 +52,7 @@ class AmbulanceListView(ListView):
 
 
 
+# seeding the database
 def seed(request):
     from .seeds import doctors
 
