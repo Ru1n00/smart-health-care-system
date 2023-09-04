@@ -10,19 +10,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    {% block styles %}
+        
+    {% endblock styles %}
 </head>
 <body>
     <nav>
         <div class="shcs-navbar">
             <div class="shcs-nav-container">
                 <div class="shcs-logo">
-                    <h1>Smart Health Care System</h1>
+                    <h1><a href="/" style="text-decoration: none; color: #000;">Smart Health Care System</a></h1>
                 </div>
-                <a class="shcs-nav-anchor" href="">Doctors</a>
-                <a class="shcs-nav-anchor" href="">Donors</a>
-                <a class="shcs-nav-anchor" href="">Ambulance</a>
+                <a class="shcs-nav-anchor" href="{% url 'smart_health:doctors' %}">Doctors</a>
+                <a class="shcs-nav-anchor" href="{% url 'smart_health:blood_donors' %}">Donors</a>
+                <a class="shcs-nav-anchor" href="{% url 'smart_health:ambulances' %}">Ambulance</a>
                 <a class="shcs-nav-anchor" href="">AI psychiatrist</a>
-                <a class="shcs-nav-anchor" href="#bmi">BMI</a>
+                <a class="shcs-nav-anchor" href="/#bmi">BMI</a>
                 <div class="shcs-hamburger-lines">
                     <span class="shcs-line shcs-line1"></span>
                     <span class="shcs-line shcs-line2"></span>
@@ -32,16 +36,17 @@
         </div>
     </nav>
 
+
     <div class="shcs-main-section">
         <!-- nav menu -->
         <div class="shcs-nav-menu">
             <div class="shcs-menu-items shcs-menu-items-close">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Doctors</a></li>
-                <li><a href="#">Donors</a></li>
-                <li><a href="#">Ambulance</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'smart_health:doctors' %}">Doctors</a></li>
+                <li><a href="{% url 'smart_health:blood_donors' %}">Donors</a></li>
+                <li><a href="{% url 'smart_health:ambulances' %}">Ambulance</a></li>
                 <li><a href="#">Ai psychiatrist</a></li>
-                <li><a href="#bmi">BMI</a></li>
+                <li><a href="/#bmi">BMI</a></li>
             </div>
         </div>
         
@@ -55,6 +60,21 @@
         Welcome to Smart Health Care System, where you can find doctors, blood donors, and ambulance info. Save time, make informed decisions, and improve your health today. Start exploring now!
      -->
 
+    <div class="container-fluid bg-light">
+        <footer class="py-3 mt-4">
+        <ul class="nav justify-content-center pb-3 mb-3" style="border-bottom: 1px solid rgba(33, 37, 41, 0.4)">
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="{% url 'smart_health:doctors' %}" class="nav-link px-2 text-body-secondary">Doctors</a></li>
+            <li class="nav-item"><a href="{% url 'smart_health:blood_donors' %}" class="nav-link px-2 text-body-secondary">Donors</a></li>
+            <li class="nav-item"><a href="{% url 'smart_health:ambulances' %}" class="nav-link px-2 text-body-secondary">Ambulance</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">AI Psychiatrist</a></li>
+            <li class="nav-item"><a href="/#bmi" class="nav-link px-2 text-body-secondary">BMI</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
+        </footer>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
     <script src="{% static 'js/main.js' %}"></script>
@@ -63,18 +83,5 @@
         
     {% endblock scripts %}
 
-    <div class="container-fluid bg-light">
-        <footer class="py-3 mt-4">
-          <ul class="nav justify-content-center pb-3 mb-3" style="border-bottom: 1px solid rgba(33, 37, 41, 0.4)">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Doctors</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Donors</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Ambulance</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">AI Psychiatrist</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">BMI</a></li>
-          </ul>
-          <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
-        </footer>
-    </div>
 </body>
 </html>
