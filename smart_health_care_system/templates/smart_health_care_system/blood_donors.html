@@ -1,9 +1,32 @@
-{% for donor in blood_donors %}
-    <ul>
-        <li>{{ donor.name }}</li>
-        <li>{{ donor.blood_group }}</li>
-        <li>{{ donor.location }}</li>
-        <li>{{ donor.contact_info }}</li>
-    </ul>
-    <br>
-{% endfor %}
+{% extends 'smart_health_care_system/base.html' %}
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/components/searchbox.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <div class="container mt-4" style="min-height: calc(100vh - 230px);">
+        {% include 'smart_health_care_system/components/searchbox.html' with action_url="/blood-donors/search" only %}
+
+        <h1 class="text-center">Blood Donors</h1>
+        <div class="row row-cols-1 row-cols-md-2 g-4 my-4">
+            {% for donor in blood_donors %}
+                <div class="col col-12 col-md-6">
+                    <div class="shcs-gm-card">
+                        <span class="fw-bold fs-5">{{ donor.name }}</span>
+                        <span class="fw-bold fs-5">{{ donor.blood_group }}</span>
+                        <span class="fw-bold fs-5">{{ donor.location }}</span>
+                        <span class="fw-bold fs-5">{{ donor.contact_info }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+            {% include 'smart_health_care_system/components/pagination.html' %}
+        {% endif %}
+    </div>
+{% endblock content %}

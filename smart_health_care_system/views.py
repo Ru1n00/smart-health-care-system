@@ -15,9 +15,8 @@ class DoctorListView(ListView):
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
-        print(request.GET)
         if 'query' in request.GET:
-            self.query = request.GET['query']
+            self.query = request.GET['query'].strip()
         else:
             self.query = ''
         
@@ -41,14 +40,45 @@ class BloodDonorListView(ListView):
     model = BloodDonor
     template_name = 'smart_health_care_system/blood_donors.html'
     context_object_name = 'blood_donors'
-    paginate_by = 10
+    paginate_by = 20
+
+
+    def get(self, request, *args, **kwargs):
+        if 'query' in request.GET:
+            self.query = request.GET['query'].strip()
+        else:
+            self.query = ''
+        
+        if self.query:
+            self.object_list = self.model.objects.filter(Q(name__icontains=self.query) | Q(blood_group__icontains=self.query) | Q(location__icontains=self.query))
+            
+        else:
+            self.object_list = self.model.objects.all()
+        
+        context = self.get_context_data()
+        return self.render_to_response(context)
 
 
 class AmbulanceListView(ListView):
     model = Ambulance
     template_name = 'smart_health_care_system/ambulances.html'
     context_object_name = 'ambulances'
-    paginate_by = 10
+    paginate_by = 20
+
+    def get(self, request, *args, **kwargs):
+        if 'query' in request.GET:
+            self.query = request.GET['query'].strip()
+        else:
+            self.query = ''
+        
+        if self.query:
+            self.object_list = self.model.objects.filter(Q(name__icontains=self.query) | Q(district__icontains=self.query))
+            
+        else:
+            self.object_list = self.model.objects.all()
+        
+        context = self.get_context_data()
+        return self.render_to_response(context)
 
 
 
