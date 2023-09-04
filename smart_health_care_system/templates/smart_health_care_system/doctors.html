@@ -1,13 +1,96 @@
-{% for doctor in doctors %}
-    {{ doctor.name }}
-    {{ doctor.speciality }}
-    {{ doctor.degrees_earned }}
-    {{ doctor.position }}
-    {{ doctor.location }}
-    {{ doctor.visiting_place }}
-    {{ doctor.visiting_hours }}
-    {{ doctor.contact_info }}
-    {% if doctor.img %}
-        {{ doctor.img.url }}
-    {% endif %}
-{% endfor %}
+{% extends 'smart_health_care_system/base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/components/searchbox.css' %}">
+{% endblock styles %}
+
+
+
+{% block content %}
+    {% include 'smart_health_care_system/components/searchbox.html' with action_url="/doctors/search" only %}
+    <div class="container">        
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for doctor in doctors %}
+                <div class="col" style="cursor: pointer;">
+                    <a href="{% url 'smart_health:doctor_detail' doctor.id %}" style="text-decoration: none; color: rgba(0, 0, 0, 0)">
+
+                        <div class="card shcs-radius shadow">
+                            <div class="d-flex justify-content-center my-4">
+                                <img src="{% if doctor.img %} {{ doctor.img.url }} {% else %} {% static '/image/no-img.jpeg' %} {% endif %}" height="270px" width="200px" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center" style="color: #ff8585;">{{ doctor.name }}</h5>
+                                <div class="card-text text-center">{{ doctor.degrees_earned }}</div>
+                                <div class="card-text text-center fw-bold" style="color: #0d6efd;"><a href="{% url 'smart_health:doctor_search' %}?query={{ doctor.speciality }}">{{ doctor.speciality }}</a></div>
+                                <div class="card-text text-center">{{ doctor.location }}</div>
+                                <div class="card-text text-center">{{ doctor.contact_info }}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    
+    
+        {% if is_paginated %}
+            <ul class="pagination mt-4">
+                {% if page_obj.has_previous %}
+                    {% if '?' in request.get_full_path %}
+                        {% if 'page' in request.get_full_path %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{request.get_full_path|param_replace:1 }}">&laquo; first</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{request.get_full_path}}?page=1">&laquo; first</a>
+                            </li>
+                        {% endif %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{request.get_full_path|param_replace:page_obj.previous_page_number }}">previous</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">&laquo; first</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                {% endif %} 
+
+
+                <li class="page-item">
+                    <span class="current page-link" style="color: #000 !important;">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                </li>
+                    
+
+
+                {% if page_obj.has_next %}
+                    {% if '?' in request.get_full_path %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{request.get_full_path | param_replace:page_obj.next_page_number}}">next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="{{request.get_full_path | param_replace:page_obj.paginator.num_pages }}">&raquo; last</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock content %}
