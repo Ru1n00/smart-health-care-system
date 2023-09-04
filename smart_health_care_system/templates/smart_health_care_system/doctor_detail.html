@@ -1,7 +1,9 @@
 {% extends 'smart_health_care_system/base.html' %}
 {% load static %}
+
+
 {% block content %}
-<div class="container my-4">
+<div class="container my-4" style="min-height: calc(100vh - 230px);">
     <div class="row">
         <div class="col-md-4" style="min-height: 300px;">
             <img src="{% if doctor.img %} {{ doctor.img.url }} {% else %} {% static '/image/no-img.jpeg' %} {% endif %}"  class="img-fluid" alt="Responsive image">
@@ -9,12 +11,12 @@
         <div class="col-md-8">
             <h1>{{ doctor.name }}</h1>
             <h3>{{ doctor.speciality }}</h3>
-            <p>{{ doctor.degrees_earned }}</p>
-            <p>{{ doctor.position }}</p>
-            <p>{{ doctor.location }}</p>
-            <p>{{ doctor.visiting_place }}</p>
-            <p>{{ doctor.visiting_hours }}</p>
-            <p>{{ doctor.contact_info }}</p>
+            <p class="fw-bold">{{ doctor.degrees_earned }}</p>
+            <p class="fw-bold">{{ doctor.position }}</p>
+            <p class="fw-bold">{{ doctor.location }}</p>
+            <p class="fw-bold">{{ doctor.visiting_place }}</p>
+            <p class="fw-bold">{{ doctor.visiting_hours }}</p>
+            <p class="fw-bold">{{ doctor.contact_info }}</p>
         </div>
     </div>
 </div>
