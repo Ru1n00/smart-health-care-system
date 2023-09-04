@@ -8,8 +8,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #DDDCE3;
-  background-attachment: fixed;
+  background: url(https://source.unsplash.com/E8Ufcyxz514/2400x1823) center/cover no-repeat fixed;
+  background: url(https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGJhY2tncm91bmQlMjBhYnN0YXJjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60) center/cover no-repeat fixed;
+  background: url(https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGJhY2tncm91bmQlMjBhYnN0YXJjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=600) center/cover no-repeat fixed;
+  background: url(https://images.pexels.com/photos/4175070/pexels-photo-4175070.jpeg?auto=compress&cs=tinysrgb&w=1600) center/cover no-repeat fixed;
+  background: url("../image/bg-8.png") center/cover no-repeat fixed;
 }
 
 .shcs-container {
@@ -397,11 +400,6 @@ body {
     font-size: 1.5rem !important;
   }
 }
-@media (max-width: 768px) {
-  .shcs-fs-2 {
-    font-size: 2rem !important;
-  }
-}
 
 .shcs-landing-page-font {
   font-family: "Volkhov", serif;
@@ -460,4 +458,22 @@ body {
 
 .shcs-radius {
   border-radius: 25px;
+}
+
+.shcs-gm-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+}
+
+.shcs-gm-card-footer {
+  font-size: 0.65em;
+  color: #446;
 }/*# sourceMappingURL=custom.css.map */
