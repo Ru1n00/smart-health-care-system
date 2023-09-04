@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('doctors/', views.DoctorListView.as_view(), name='doctors'),
     path('doctors/<int:pk>/', views.DoctorDetailView.as_view(), name='doctor_detail'),
+    path('doctors/search', views.DoctorListView.as_view(), name="doctor_search" ),
     path('blood-donors/', views.BloodDonorListView.as_view(), name='blood_donors'),
     path('ambulances/', views.AmbulanceListView.as_view(), name='ambulances'),
     # path('seed/', views.seed, name='seed'),
