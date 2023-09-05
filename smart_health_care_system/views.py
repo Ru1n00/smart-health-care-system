@@ -5,7 +5,7 @@ from django.db.models import Q
 from .models import Doctor, BloodDonor, Ambulance
 # Create your views here.
 def index(request):
-    return render(request, 'smart_health_care_system/index.html')
+    return render(request, 'smart_health_care_system/index.html', {'current_page': 'home'})
 
 
 class DoctorListView(ListView):
@@ -27,6 +27,7 @@ class DoctorListView(ListView):
             self.object_list = self.model.objects.all()
         
         context = self.get_context_data()
+        context['current_page'] = 'doctors'
         return self.render_to_response(context)
 
 
@@ -56,6 +57,7 @@ class BloodDonorListView(ListView):
             self.object_list = self.model.objects.all()
         
         context = self.get_context_data()
+        context['current_page'] = 'donors'
         return self.render_to_response(context)
 
 
@@ -78,6 +80,7 @@ class AmbulanceListView(ListView):
             self.object_list = self.model.objects.all()
         
         context = self.get_context_data()
+        context['current_page'] = 'ambulances'
         return self.render_to_response(context)
 
 

@@ -118,6 +118,10 @@ body {
   width: 100%;
 }
 
+.shcs-nav-active {
+  font-weight: bolder !important;
+}
+
 .shcs-nav-container .shcs-hamburger-lines {
   display: block;
   height: 26px;
