@@ -20,12 +20,12 @@
         <div class="shcs-navbar">
             <div class="shcs-nav-container">
                 <div class="shcs-logo">
-                    <h1><a href="/" style="text-decoration: none; color: #000;">Smart Health Care System</a></h1>
+                    <h1><img src="{% static 'image/amb.jpg' %}" class="me-2" height="30"><a href="/" style="text-decoration: none; color: #000;">Smart Health Care System</a></h1>
                 </div>
                 <a class="shcs-nav-anchor {% if current_page == 'doctors' %} shcs-nav-active {% endif %}" href="{% url 'smart_health:doctors' %}">Doctors</a>
                 <a class="shcs-nav-anchor {% if current_page == 'donors' %} shcs-nav-active {% endif %}" href="{% url 'smart_health:blood_donors' %}">Donors</a>
                 <a class="shcs-nav-anchor {% if current_page == 'ambulances' %} shcs-nav-active {% endif %}" href="{% url 'smart_health:ambulances' %}">Ambulance</a>
-                <a class="shcs-nav-anchor {% if current_page == 'ai' %} shcs-nav-active {% endif %}" href="">AI psychiatrist</a>
+                <a class="shcs-nav-anchor {% if current_page == 'ai' %} shcs-nav-active {% endif %}" href="">AI psychiatric</a>
                 <a class="shcs-nav-anchor" href="/#bmi">BMI</a>
                 <div class="shcs-hamburger-lines">
                     <span class="shcs-line shcs-line1"></span>
