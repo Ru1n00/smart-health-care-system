@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import Q
 
 from .models import Doctor, BloodDonor, Ambulance
+from psychiatric_ai import utils
 # Create your views here.
 def index(request):
     return render(request, 'smart_health_care_system/index.html', {'current_page': 'home'})
@@ -84,6 +85,50 @@ class AmbulanceListView(ListView):
         return self.render_to_response(context)
 
 
+
+class AiPyschiatricView(TemplateView):
+    template_name = 'smart_health_care_system/ai_pyschiatric.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_page'] = 'ai'
+        return context
+
+    def post(self, request, *args, **kwargs):
+        age = request.POST.get('age')
+        gender = request.POST.get('gender')
+        education_level = request.POST.get('education_level')
+        symptom_checklist = request.POST.get('symptom_checklist')
+        behavior_patterns = request.POST.get('behavior_patterns')
+        diagnostic_tests = request.POST.get('diagnostic_tests')
+        lifestyle_factors = request.POST.get('lifestyle_factors')
+        stressors = request.POST.get('stressors')
+
+        context = self.get_context_data()
+        context['age'] = age
+        context['gender'] = gender
+        context['education_level'] = education_level
+        context['symptom_checklist'] = symptom_checklist
+        context['behavior_patterns'] = behavior_patterns
+        context['diagnostic_tests'] = diagnostic_tests
+        context['lifestyle_factors'] = lifestyle_factors
+        context['stressors'] = stressors
+        context['result'] = 'No result'
+        context['current_page'] = 'ai'
+
+        # print(age, gender, education_level, symptom_checklist, behavior_patterns, diagnostic_tests, lifestyle_factors, stressors)
+        # print('---------------------', utils)
+        context['result'] = utils.get_psychiatric_disorder({
+            'age': age,
+            'gender': gender,
+            'education_level': education_level,
+            'symptom_checklist': symptom_checklist,
+            'behavior_patterns': behavior_patterns,
+            'diagnostic_tests': diagnostic_tests,
+            'lifestyle_factors': lifestyle_factors,
+            'stressors': stressors,
+        })
+        return self.render_to_response(context)
 
 # seeding the database
 def seed(request):

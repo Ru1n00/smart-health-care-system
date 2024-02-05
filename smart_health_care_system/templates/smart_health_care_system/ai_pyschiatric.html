@@ -1,0 +1,79 @@
+{% extends 'smart_health_care_system/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container mt-4" style="min-height: calc(100vh - 230px);">
+
+        <h1 class="text-center">Ai Psychiatric</h1>
+
+        <form action="" method="post" class="mt-5">
+            {% csrf_token %}
+            <div class="d-flex gap-3">
+                <div class="d-flex flex-column gap-2 w-50">
+                    <input class="form-control" type="text" value="" placeholder="Age" name="age" required>
+                    <select class="form-select" name="gender" id="gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <select class="form-select" name="education_level" id="education" required>
+                        <option value="">Select Edication Level</option>
+                        <option value="high school">High School</option>
+                        <option value="college">College</option>
+                        <option value="graduate">Graduate</option>
+                    </select>
+                    <select class="form-select" name="symptom_checklist" id="symptom" required>
+                        <option value="">Select Symptom</option>
+                        <option value="panic attacks">Panic attacks</option>
+                        <option value="appetite changes">Appetite changes</option>
+                        <option value="sleep disturbances">Sleep disturbances</option>
+                    </select>
+                    <select class="form-select" name="behavior_patterns" id="behavior" required>
+                        <option value="">Select Behavior Pattern</option>
+                        <option value="aggressive behavior">Aggressive behavior</option>
+                        <option value="compulsive rituals">Compulsive rituals</option>
+                        <option value="social withdrawal">Social withdrawal</option>
+                    </select>
+                    <select class="form-select" name="diagnostic_tests" id="diagnosis" required>
+                        <option value="">Select Diagnostic Test</option>
+                        <option value="beck depression inventory">Beck Depression Inventory</option>
+                        <option value="mini-mental state examination">Mini-Mental State Examination</option>
+                        <option value="hamilton anxiety rating scale">Hamilton Anxiety Rating Scale</option>
+                    </select>
+                    <select class="form-select" name="lifestyle_factors" id="lifestyle" required>
+                        <option value="">Select Lifestyle Factor</option>
+                        <option value="physical activity level">Physical activity level</option>
+                        <option value="nutritional habits">Nutritional habits</option>
+                        <option value="social support network">Social support network</option>
+                    </select>
+                    <select class="form-select" name="stressors" id="stressors" required>
+                        <option value="">Select Stressor</option>
+                        <option value="financial difficulties">Financial difficulties</option>
+                        <option value="relationship problems">Relationship problems</option>
+                        <option value="work-related stress">Work-related stress</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="result border w-50 d-flex flex-column gap-4 position-relative">
+                    {% if result %}
+                        <div class="alert alert-success position-absolute" role="alert">
+                            showing result for - <br>
+                            <b>{{ gender }}</b>, <b>{{ age }}</b>, <b>{{ education_level }}</b>, <b>{{ symptom_checklist }}</b>, <b>{{ behavior_patterns }}</b>, <b>{{ diagnostic_tests }}</b>, <b>{{ lifestyle_factors }}</b>, <b>{{ stressors }}</b>
+                        </div>
+                    {% endif %}
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div>
+                            {% if result %}
+                                <h2>{{ result }}</h2>
+                            {% else %}
+                                <h2>AI will predict the result here</h2> 
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+{% endblock content %}
