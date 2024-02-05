@@ -37,7 +37,7 @@ class BloodDonor(models.Model):
     blood_group = models.CharField(max_length=10, help_text="Enter donor's blood group -> A+", choices=BLOOD_GROUPS)
     location = models.CharField(max_length=100, help_text="Enter donor's location -> Karachi, Pakistan")
     contact_info = models.CharField(max_length=100, help_text="Enter donor's contact info -> +92 123 4567890")
-    last_donation_date = models.DateField(help_text="Enter donor's last donation date -> 2020-12-31")
+    last_donation_date = models.DateField(help_text="Enter donor's last donation date -> 2020-12-31", null=True, blank=True)
 
 
     class Meta:
