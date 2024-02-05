@@ -25,7 +25,7 @@
                 <a class="shcs-nav-anchor {% if current_page == 'doctors' %} shcs-nav-active {% endif %}" href="{% url 'smart_health:doctors' %}">Doctors</a>
                 <a class="shcs-nav-anchor {% if current_page == 'donors' %} shcs-nav-active {% endif %}" href="{% url 'smart_health:blood_donors' %}">Donors</a>
                 <a class="shcs-nav-anchor {% if current_page == 'ambulances' %} shcs-nav-active {% endif %}" href="{% url 'smart_health:ambulances' %}">Ambulance</a>
-                <a class="shcs-nav-anchor {% if current_page == 'ai' %} shcs-nav-active {% endif %}" href="">AI psychiatric</a>
+                <a class="shcs-nav-anchor {% if current_page == 'ai' %} shcs-nav-active {% endif %}" href="{% url 'smart_health:ai_psychiatric' %}">AI psychiatric</a>
                 <a class="shcs-nav-anchor" href="/#bmi">BMI</a>
                 <div class="shcs-hamburger-lines">
                     <span class="shcs-line shcs-line1"></span>
