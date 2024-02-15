@@ -15,6 +15,7 @@ urlpatterns = [
     path('blood-donors/search', views.BloodDonorListView.as_view(), name='blood_donors_search'),
     path('ambulances/', views.AmbulanceListView.as_view(), name='ambulances'),
     path('ambulances/search', views.AmbulanceListView.as_view(), name='ambulances_search'),
+    path('ai-psychiatric/', views.AiPyschiatricView.as_view(), name='ai_psychiatric'),
     # path('seed/', views.seed, name='seed'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
