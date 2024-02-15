@@ -14,12 +14,15 @@
         <h1 class="text-center">Blood Donors</h1>
         <div class="row row-cols-1 row-cols-md-2 g-4 my-4">
             {% for donor in blood_donors %}
-                <div class="col col-12 col-md-6">
+                <div class="col col-12 col-md-6 position-relative">
                     <div class="shcs-gm-card">
                         <span class="fw-bold fs-5">{{ donor.name }}</span>
                         <span class="fw-bold fs-5">{{ donor.blood_group }}</span>
                         <span class="fw-bold fs-5">{{ donor.location }}</span>
                         <span class="fw-bold fs-5">{{ donor.contact_info }}</span>
+                    </div>
+                    <div class="position-absolute" style="bottom: 5px; right: 30px;">
+                        <span style="font-size: 13px;">Last donated on: {{ donor.last_donation_date }}</span>
                     </div>
                 </div>
             {% endfor %}
